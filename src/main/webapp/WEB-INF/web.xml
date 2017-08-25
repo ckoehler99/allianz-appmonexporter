@@ -3,5 +3,17 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>Dynatrace Reporting Interface</display-name>
+  
+  <!-- Define servlet, named helloServlet -->
+<servlet>
+   <servlet-name>reportServlet</servlet-name>
+   <servlet-class>com.dynatrace.appmon.expertservices.allianzappmonexporter.HelloServlet</servlet-class>
+</servlet>
+ 
+<!-- Defines the path to access this Servlet -->
+<servlet-mapping>
+   <servlet-name>reportServlet</servlet-name>
+   <url-pattern>/generate</url-pattern>
+</servlet-mapping>
 </web-app>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<dynatrace>
+		<host>localhost</host>
+		<port>2021</port>
+		<user>admin</user>
+		<pass>admin</pass>
+	</dynatrace>
+</settings>
