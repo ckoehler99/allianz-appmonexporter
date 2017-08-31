@@ -5,15 +5,23 @@
 <web-app>
   <display-name>Dynatrace Reporting Interface</display-name>
   
-  <!-- Define servlet, named helloServlet -->
-<servlet>
-   <servlet-name>reportServlet</servlet-name>
-   <servlet-class>com.dynatrace.appmon.expertservices.allianzappmonexporter.HelloServlet</servlet-class>
-</servlet>
- 
-<!-- Defines the path to access this Servlet -->
-<servlet-mapping>
-   <servlet-name>reportServlet</servlet-name>
-   <url-pattern>/generate</url-pattern>
-</servlet-mapping>
+  <!-- Define servlet -->
+	<servlet>
+	   <servlet-name>reportServlet</servlet-name>
+	   <servlet-class>com.dynatrace.appmon.expertservices.allianzappmonexporter.ReportServlet</servlet-class>
+	</servlet>
+	<servlet>
+	   <servlet-name>statusServlet</servlet-name>
+	   <servlet-class>com.dynatrace.appmon.expertservices.allianzappmonexporter.StatusServlet</servlet-class>
+	</servlet>
+	 
+	<!-- Defines the path to access this Servlet -->
+	<servlet-mapping>
+	   <servlet-name>reportServlet</servlet-name>
+	   <url-pattern>/generate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	   <servlet-name>statusServlet</servlet-name>
+	   <url-pattern>/status</url-pattern>
+	</servlet-mapping>
 </web-app>

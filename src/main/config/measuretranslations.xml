@@ -1,0 +1,9 @@
+<translations>
+	<measuretranslation dtname="CPU Total Time" ptsname="node_cpu"/>
+	<measuretranslation dtname="" ptsname="node_filesystem_size" />
+	<measuretranslation dtname="" ptsname="node_memory_MemTotal" />
+	<measuretranslation dtname="" ptsname="node_boot_time" />
+	<measuretranslation dtname="" ptsname="node_exporter_scrape_duration_seconds_sum" />
+	<measuretranslation dtname="Memory Free" ptsname="node_memory_MemFree" />
+	<measuretranslation dtname="Disk Storage Usable" ptsname="node_filesysten_free" />
+</translations>
