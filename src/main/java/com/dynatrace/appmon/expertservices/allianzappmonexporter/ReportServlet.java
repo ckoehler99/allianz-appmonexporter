@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
+import com.dynatrace.appmon.expertservices.allianzappmonexporter.appmon.connector.AppMonConnector;
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.appmon.controller.ReportController;
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.config.Config;
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.config.controller.ConfigController;
@@ -16,8 +19,9 @@ import com.dynatrace.appmon.expertservices.allianzappmonexporter.model.Prometheu
 
 
 public class ReportServlet extends HttpServlet {
-    
+	final static Logger logger = Logger.getLogger(AppMonConnector.class);
    private static final long serialVersionUID = 1L;
+   
  
    private Config config;
    private ReportController reportController;
@@ -35,10 +39,13 @@ public class ReportServlet extends HttpServlet {
        ServletOutputStream out = response.getOutputStream();
        
        String hostnameFromQuery = request.getParameter("hostname");
+       logger.info("Request received for Host: " +hostnameFromQuery);
        if(hostnameFromQuery != null && !hostnameFromQuery.isEmpty()) {
     	   ArrayList<PrometheusMeasure> prometheusMeasures = getPrometheusMeasures(hostnameFromQuery);
            if(prometheusMeasures.isEmpty()) {
         	   out.println("No metrics found for host.");
+        	   out.println("----------APPMON STATUS----------");
+        	   out.println(reportController.getAppMonStatus());
            }
            else {
         	   for(PrometheusMeasure measure : prometheusMeasures) {

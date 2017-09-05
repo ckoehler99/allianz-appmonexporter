@@ -15,6 +15,9 @@ public class Config {
     private String pass;
     private String dashboard;
     private Boolean isSSL;
+    private String profile;
+    private String timeFrameUnit;
+    private String timeFrameValue;
 
    public String getHost() {
 		return host;
@@ -62,7 +65,29 @@ public class Config {
 		this.isSSL = isSSL;
 	}
 	
-	public String getCompleteURI()
+	public String getProfile() {
+		return profile;
+	}
+	@XmlElement(name = "profile")
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+	
+	public String getTimeFrameUnit() {
+		return timeFrameUnit;
+	}
+	@XmlElement(name = "timeFrameUnit")
+	public void setTimeFrameUnit(String timeFrameUnit) {
+		this.timeFrameUnit = timeFrameUnit;
+	}
+	public String getTimeFrameValue() {
+		return timeFrameValue;
+	}
+	@XmlElement(name = "timeFrameValue")
+	public void setTimeFrameValue(String timeFrameValue) {
+		this.timeFrameValue = timeFrameValue;
+	}
+	public String getBaseUri()
 	{
 		StringBuilder builder = new StringBuilder();
 		String prot;
@@ -72,18 +97,42 @@ public class Config {
 		builder.append(getHost());
 		builder.append(":");
 		builder.append(getPort());
+		
+		return builder.toString();
+	}
+	
+	public String getCompleteURI()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append(getBaseUri());
 		builder.append("/rest/management/reports/create/");
 		builder.append(getDashboard());
 		
 		return builder.toString();
 	}
 	
+	public String getCompleteUriFromPath(String path) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(getBaseUri());
+		builder.append(path);
+		return builder.toString();
+	}
+	
 	public String getQueryString(String hostName)
 	{
 		StringBuilder builder = new StringBuilder();
-		builder.append("?filter=hf:Host?");
+		builder.append("?");
+		builder.append("source=live:");
+		builder.append(getProfile());
+		builder.append("&");
+		builder.append("filter=hf:Host?");
 		builder.append(hostName);
-		builder.append("&filter=tf:OffSetTimeFrame?1:MINUTES&type=xml");
+		builder.append("&");
+		builder.append("filter=tf:OffSetTimeFrame?");
+		builder.append(getTimeFrameValue());
+		builder.append(":");
+		builder.append(getTimeFrameUnit());
+		builder.append("&type=xml");
 		return builder.toString();
 	}
     

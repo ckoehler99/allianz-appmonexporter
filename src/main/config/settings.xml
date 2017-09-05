@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dynatrace>
 	<host>localhost</host>
-	<port>8020</port>
-	<ssl>0</ssl>
+	<port>8021</port>
+	<ssl>1</ssl>
 	<user>admin</user>
 	<pass>admin</pass>
 	<dashboard>__Allianz-PrometheusExporter</dashboard>
+	<profile>easyTravel</profile>
+	<timeFrameUnit>MINUTES</timeFrameUnit>
+	<timeFrameValue>1</timeFrameValue>
 </dynatrace>

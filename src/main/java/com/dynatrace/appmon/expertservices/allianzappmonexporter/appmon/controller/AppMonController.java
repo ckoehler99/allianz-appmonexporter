@@ -8,12 +8,15 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.log4j.Logger;
+
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.appmon.connector.AppMonConnector;
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.model.DashboardReport;
 
 public class AppMonController {
 	
 	private AppMonConnector appMonConnector;
+	final static Logger logger = Logger.getLogger(AppMonConnector.class);
 	
 	public AppMonController()
 	{
@@ -21,6 +24,7 @@ public class AppMonController {
 	}
 	
 	public DashboardReport getDashboardReportForHost(String hostName) {
+		logger.info("Getting dashboard report for host: " + hostName);
 		DashboardReport report = null;
 		
 		String result = appMonConnector.getAppMonDataForHost(hostName);
@@ -47,5 +51,8 @@ public class AppMonController {
 		return report;
 	}
 	
+	public String getAppMonStatus() {
+		return appMonConnector.getAppMonStatus();
+	}
 
 }

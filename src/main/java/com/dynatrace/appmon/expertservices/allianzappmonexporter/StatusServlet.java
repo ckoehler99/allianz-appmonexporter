@@ -15,6 +15,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.appmon.connector.AppMonConnector;
+import com.dynatrace.appmon.expertservices.allianzappmonexporter.appmon.controller.AppMonController;
+import com.dynatrace.appmon.expertservices.allianzappmonexporter.appmon.controller.ReportController;
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.config.Config;
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.config.controller.ConfigController;
 import com.dynatrace.appmon.expertservices.allianzappmonexporter.model.DashboardReport;
@@ -25,11 +27,13 @@ public class StatusServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
  
    private Config config;
-   private AppMonConnector connector;
+
+   private ReportController reportController;
     
    public StatusServlet() {
 	   ConfigController configController = ConfigController.getInstance(); 
-	   connector = new AppMonConnector();
+
+	   reportController = new ReportController();
 	   config = configController.getConfig();
    }
  
@@ -39,15 +43,8 @@ public class StatusServlet extends HttpServlet {
         
        ServletOutputStream out = response.getOutputStream();
         
-       out.println("<html>");
-       out.println("<head><title>Hello Servlet</title></head>");
-        
-       out.println("<body>");
-       out.println("<h3>Hello World</h3>");
-       //String result = connector.getAppMonData();
-       //out.println(connector.getAppMonData());
-       out.println("</body>");
-       out.println("<html>");
+       out.println(reportController.getAppMonStatus());
+
        
    }
  
