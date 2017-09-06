@@ -1,5 +1,8 @@
 package com.dynatrace.appmon.expertservices.allianzappmonexporter.config;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -101,39 +104,8 @@ public class Config {
 		return builder.toString();
 	}
 	
-	public String getCompleteURI()
-	{
-		StringBuilder builder = new StringBuilder();
-		builder.append(getBaseUri());
-		builder.append("/rest/management/reports/create/");
-		builder.append(getDashboard());
-		
-		return builder.toString();
-	}
 	
-	public String getCompleteUriFromPath(String path) {
-		StringBuilder builder = new StringBuilder();
-		builder.append(getBaseUri());
-		builder.append(path);
-		return builder.toString();
-	}
 	
-	public String getQueryString(String hostName)
-	{
-		StringBuilder builder = new StringBuilder();
-		builder.append("?");
-		builder.append("source=live:");
-		builder.append(getProfile());
-		builder.append("&");
-		builder.append("filter=hf:Host?");
-		builder.append(hostName);
-		builder.append("&");
-		builder.append("filter=tf:OffSetTimeFrame?");
-		builder.append(getTimeFrameValue());
-		builder.append(":");
-		builder.append(getTimeFrameUnit());
-		builder.append("&type=xml");
-		return builder.toString();
-	}
+	
     
 }

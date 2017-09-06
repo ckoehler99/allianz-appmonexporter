@@ -37,26 +37,24 @@ public class ReportServlet extends HttpServlet {
            HttpServletResponse response) throws ServletException, IOException {
 	   
        ServletOutputStream out = response.getOutputStream();
-       
+       response.setContentType("text/html; charset=utf-8");
        String hostnameFromQuery = request.getParameter("hostname");
-       logger.info("Request received for Host: " +hostnameFromQuery);
+       logger.info("Request received for Host: " + hostnameFromQuery);
        if(hostnameFromQuery != null && !hostnameFromQuery.isEmpty()) {
     	   ArrayList<PrometheusMeasure> prometheusMeasures = getPrometheusMeasures(hostnameFromQuery);
            if(prometheusMeasures.isEmpty()) {
-        	   out.println("No metrics found for host.");
-        	   out.println("----------APPMON STATUS----------");
-        	   out.println(reportController.getAppMonStatus());
+        	   response.setStatus(204);
            }
            else {
         	   for(PrometheusMeasure measure : prometheusMeasures) {
         		   out.println(measure.toString());
         	   }
+        	   // print new line at the end
+        	   out.println();
            }
        }
        else
-    	   out.println("No hostname querystring specified.");
-       
-       
+    	   out.println("No hostname querystring specified."); 
    }
  
    @Override

@@ -36,7 +36,7 @@ public class AppMonConnector {
 	{
 		String retString = "";
 		String url = "/rest/management/version";
-		retString = getAppMonData("GET", config.getCompleteUriFromPath(url));
+		retString = getAppMonData("GET", configController.getCompleteUriFromPath(url));
 		
 		return retString;
 	}
@@ -116,7 +116,7 @@ public class AppMonConnector {
 	public String getAppMonDataForHost(String hostName)
 	{
 		String response = "";
-		String url = config.getCompleteURI() + config.getQueryString(hostName);
+		String url = configController.getCompleteURI() + configController.getAppMonQueryStringForHost(hostName);
 		response = getAppMonData("GET", url);
 		return response;
 	}

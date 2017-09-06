@@ -1,8 +1,6 @@
 <translations>
 	<measuretranslation dtname="Disk Storage Used" ptsname="node_filesystem_size" />
 	<measuretranslation dtname="Memory Used" ptsname="node_memory_MemTotal" />
-	<measuretranslation dtname="" ptsname="node_boot_time" />
-	<measuretranslation dtname="" ptsname="node_exporter_scrape_duration_seconds_sum" />
 	<measuretranslation dtname="Memory Free" ptsname="node_memory_MemFree" />
 	<measuretranslation dtname="Disk Storage Usable" ptsname="node_filesysten_free" />
 	<measuretranslation dtname="Network Bytes Received" ptsname="node_network_receive_bytes" />
@@ -15,5 +13,5 @@
 	<measuretranslation dtname="CPU Idle Time" ptsname="node_cpu_idle" />
 	<measuretranslation dtname="CPU IO Wait Time" ptsname="node_cpu_iowait" />
 	<measuretranslation dtname="System Load" ptsname="node_load1" />
-	<!--measuretranslation dtname="" ptsname="node_cpu_" /-->
 </translations>
+

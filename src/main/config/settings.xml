@@ -6,7 +6,7 @@
 	<user>admin</user>
 	<pass>admin</pass>
 	<dashboard>__Allianz-PrometheusExporter</dashboard>
-	<profile>easyTravel</profile>
+	<profile>My easyTravel</profile>
 	<timeFrameUnit>MINUTES</timeFrameUnit>
 	<timeFrameValue>1</timeFrameValue>
 </dynatrace>
